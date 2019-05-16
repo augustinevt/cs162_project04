@@ -1,0 +1,20 @@
+build schedule
+
+// enum
+
+// menu stuff
+
+// search
+
+// remove
+
+// add
+
+// write
+
+----
+
+- lowercase search term
+- break out to go to utils.cpp
+
+- make the leg of the stuff like lab and the quiz!!! then do the stuff for stats.

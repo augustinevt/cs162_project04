@@ -1,0 +1,14 @@
+// after watching the videos
+// review sample files
+// make changes
+  // -> refit constuctors
+
+  // -> copy constructors
+
+  // -> add destructors
+  
+// clean up functions?
+
+
+-> allocating memory to the dynamic array
+-> add destructor

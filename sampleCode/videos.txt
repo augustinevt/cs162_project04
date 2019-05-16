@@ -1,0 +1,11 @@
+MATRIX;ACTION;23;3.4
+ROGUE;ACTION;12;4
+Ace Ventura;COMEDY;56;3.6
+Happy Feet;FAMILY;34;4.5
+The Lion King;FAMILY;23;4.5
+Star Wars;ACTION;23;5
+new movie;ACTION;12;3.4
+new movie;ACTION;12;3.4
+new movie;ACTION;12;4.5
+more movies;FAMILY;23;2.3
+Happy Feet;FAMILY;12;3
