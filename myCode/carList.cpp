@@ -317,3 +317,17 @@ void CarList::writeFile(char filename[200]) {
 
 	outFile.close();
 }
+
+void VideoList::growList() {
+  capacity += 10;
+  char tempTitle[200];
+
+  Car *tempList = new Car[capacity];
+  for(int i = 0; i < size; i++) {
+    tempList[i] = list[i];
+  }
+
+  delete[] list;
+  list = templist;
+  tempList = NULL;
+}

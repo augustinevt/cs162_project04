@@ -21,6 +21,8 @@ class CarList {
     CarType carList[10000];
     int size;
 
+    void growList();
+
   public:
     CarList(char fileName[100]);
     void print();
