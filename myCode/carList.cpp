@@ -28,7 +28,10 @@ CarList::CarList(char fileName[]) {
 
   CarType car;
 
-  char title[200];
+  char* title = NULL;
+  // title = new
+  char tmpTitle[200];
+
   double mpg;
   int cylinders;
   double displacement;
@@ -41,7 +44,9 @@ CarList::CarList(char fileName[]) {
 
   while(!inFile.eof()) {
 
-    inFile.get(title, 200, ';');
+    inFile.get(tmpTitle, 200, ';');
+    title = new char[strlen(tmpTitle) + 1];
+    strcpy(title, tmpTitle);
     car.setTitle(title);
     inFile.ignore(200, ';');
 

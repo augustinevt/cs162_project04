@@ -51,7 +51,7 @@ int main() {
         break;
 
       case 'q':
-        carList.writeFile(fileName);
+        // carList.writeFile(fileName);
         cout << "Goodbye" << endl;
         break;
 
