@@ -133,3 +133,21 @@ void CarType::setOrigin(Origin newOrigin) {
 Origin CarType::getOrigin() {
   return origin;
 }
+
+const Car& operator= (const Car& car) {
+  if (this == &car) {
+    return *this;
+  } else {
+    this->setTitle(car.title);
+    this->setMpg(car.mpg);
+    this->setCylindars(car.cylindars);
+    this->setDisplacement(car.displacement);
+    this->setHorsepower(car.horsepower);
+    this->setWeight(car.weight);
+    this->setAcceleration(car.acceleration);
+    this->setModel(car.model);
+    this->setOrigin(car.origin);
+
+    return *this;
+  }
+}

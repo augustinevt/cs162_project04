@@ -29,7 +29,6 @@ CarList::CarList(char fileName[]) {
   CarType car;
 
   char* title = NULL;
-  // title = new
   char tmpTitle[200];
 
   double mpg;
