@@ -53,7 +53,10 @@ class CarType {
     int getModel();
     Origin getOrigin();
 
+    const Car& operator= (const Car& car);
+
     void print();
+    void print(ofstream &);
 };
 
 #endif

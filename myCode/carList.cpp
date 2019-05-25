@@ -196,6 +196,13 @@ void CarList::print() {
 }
 
 void CarList::addCar() {
+
+// NOTE: app CAP and refactor to use the assignment operator? and or extract car adding stuff?
+  if(size == capacity)
+  {
+    growList();
+  }
+
 	CarType car;
 
 	int origin = 0;
@@ -231,6 +238,7 @@ void CarList::addCar() {
 	getDouble(weight, weightPrompt);
 	getDouble(acceleration, accelerationPrompt);
 	getInt(model, modelPrompt);
+
 
   car.setTitle(title);
 	car.setMpg(mpg);
@@ -269,6 +277,7 @@ void CarList::addCar() {
 	} while(!validOrigin);
 
   car.setOrigin(enumOrigin);
+
 	carList[size] = car;
 	cout << "\ncar added!\n\n";
 	size++;

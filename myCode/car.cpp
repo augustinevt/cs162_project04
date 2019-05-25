@@ -54,6 +54,31 @@ void CarType::print() {
 
   return;
 }
+void Car::print(ofstream &outFile) {
+  cout << title << ";"
+       << mpg << ";"
+       << cylinders << ";"
+       << displacement << ";"
+       << horsepower << ";"
+       << weight << ";"
+       << acceleration << ";"
+       << model << ";";
+
+  switch (origin) {
+    case EUROPE:
+      cout << "Europe;" << endl;
+      break;
+    case US:
+      cout << "US;" << endl;
+      break;
+    default:
+      cout << "Japan;" << endl;
+      break;
+  }
+
+  return;
+}
+
 
 void CarType::setTitle(char newTitle[]) {
   strcpy(title, newTitle);
