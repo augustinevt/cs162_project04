@@ -18,13 +18,15 @@ using namespace std;
 class CarList {
 
   private:
-    CarType carList[10000];
+    CarType *carList;
     int size;
+    int capacity;
 
     void growList();
 
   public:
     CarList(char fileName[100]);
+    ~CarList();
     void print();
     void searchByTitle();
     void searchByModel();

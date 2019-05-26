@@ -14,8 +14,46 @@
 
 using namespace std;
 
+ostream & operator << (ostream &out, CarType &car) {
+
+  char title[200] = "";
+  car.getTitle(title);
+  double mpg = car.getMpg();
+  int cylinders = car.getCylinders();
+  double displacement = car.getDisplacement();
+  double horsepower = car.getHorsepower();
+  double weight = car.getWeight();
+  double acceleration = car.getAcceleration();
+  int model = car.getModel();
+  // char origin[200];
+
+  cout << title << ";"
+       << mpg << ";"
+       << mpg << ";"
+       << cylinders << ";"
+       << displacement << ";"
+       << horsepower << ";"
+       << weight << ";"
+       << acceleration << ";"
+       << model << ";";
+
+  switch (car.getOrigin()) {
+    case EUROPE:
+      cout << "Europe;" << endl;
+      break;
+    case US:
+      cout << "US;" << endl;
+      break;
+    default:
+      cout << "Japan;" << endl;
+      break;
+  }
+
+  return out;
+}
+
 CarType::CarType() {
-  char title[200];
+  title = new char[200];
   double mpg;
   int cylinders;
   double displacement;
@@ -24,6 +62,15 @@ CarType::CarType() {
   double acceleration;
   int model;
   char origin[200];
+}
+
+CarType::~CarType() {
+	//deallocate memory for title
+
+  if (title) {
+    delete [] title;
+    title = NULL;
+  }
 }
 
 CarType::CarType(char newTitle[]) {
@@ -54,7 +101,8 @@ void CarType::print() {
 
   return;
 }
-void Car::print(ofstream &outFile) {
+
+void CarType::print(ofstream &outFile) {
   cout << title << ";"
        << mpg << ";"
        << cylinders << ";"
@@ -80,11 +128,17 @@ void Car::print(ofstream &outFile) {
 }
 
 
-void CarType::setTitle(char newTitle[]) {
-  strcpy(title, newTitle);
+const void CarType::setTitle(char newTitle[]) {
+  if(title) {
+		delete [] title;
+		title = NULL;
+	}
+
+	title = new char[strlen(newTitle)+1];
+	strcpy(title, newTitle);
 }
 
-void CarType::getTitle(char outTitle[]) {
+const void CarType::getTitle(char outTitle[]) {
   strcpy(outTitle, title);
 }
 
@@ -159,19 +213,22 @@ Origin CarType::getOrigin() {
   return origin;
 }
 
-const Car& operator= (const Car& car) {
+CarType& CarType::operator= (CarType& car) {
+  char tmpTitle[200];
+
   if (this == &car) {
     return *this;
   } else {
-    this->setTitle(car.title);
-    this->setMpg(car.mpg);
-    this->setCylindars(car.cylindars);
-    this->setDisplacement(car.displacement);
-    this->setHorsepower(car.horsepower);
-    this->setWeight(car.weight);
-    this->setAcceleration(car.acceleration);
-    this->setModel(car.model);
-    this->setOrigin(car.origin);
+    car.getTitle(tmpTitle);
+    this->setTitle(tmpTitle);
+    this->setMpg(car.getMpg());
+    this->setCylinders(car.getCylinders());
+    this->setDisplacement(car.getDisplacement());
+    this->setHorsepower(car.getHorsepower());
+    this->setWeight(car.getWeight());
+    this->setAcceleration(car.getAcceleration());
+    this->setModel(car.getModel());
+    this->setOrigin(car.getOrigin());
 
     return *this;
   }

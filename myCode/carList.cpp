@@ -19,6 +19,8 @@ using namespace std;
 CarList::CarList(char fileName[]) {
 
   size = 0;
+  capacity = 407;
+  carList = new CarType[capacity];
 
   ifstream inFile;
   inFile.open(fileName);
@@ -88,11 +90,21 @@ CarList::CarList(char fileName[]) {
     }
 
     car.setOrigin(enumOrigin);
-    inFile.ignore(200, '\n');
 
     carList[size] = car;
+
+    inFile.ignore(200, '\n');
     size++;
   }
+}
+
+CarList::~CarList() {
+
+  if(carList)
+    {
+      delete [] carList;
+      carList = NULL;
+    }
 }
 
 void CarList::searchByTitle() {
@@ -104,7 +116,7 @@ void CarList::searchByTitle() {
 
 	for(int i = 0; i < size; i++) {
     carList[i].getTitle(carTitle);
-		if(strstr(carTitle, term)) {
+		if (strstr(carTitle, term)) {
 			carList[i].print();
 		}
 	}
@@ -190,7 +202,7 @@ void CarList::remove() {
 void CarList::print() {
   for(int i = 0; i < size; i++) {
     cout << i << " : ";
-    carList[i].print();
+    cout << carList[i];
   }
   return;
 }
@@ -198,7 +210,8 @@ void CarList::print() {
 void CarList::addCar() {
 
 // NOTE: app CAP and refactor to use the assignment operator? and or extract car adding stuff?
-  if(size == capacity)
+
+  if(size + 1 == capacity)
   {
     growList();
   }
@@ -294,30 +307,32 @@ void CarList::writeFile(char filename[200]) {
 
 	for(int i = 0; i < size; i++) {
 
-		carList[i].getTitle(title);
+    carList[i].print(outFile);
 
-		outFile << title << ";";
- 		outFile << carList[i].getMpg() << ";";
- 		outFile << carList[i].getCylinders() << ";";
- 		outFile << carList[i].getDisplacement() << ";";
- 		outFile << carList[i].getHorsepower() << ";";
- 		outFile << carList[i].getWeight() << ";";
- 		outFile << carList[i].getAcceleration() << ";";
- 		outFile << carList[i].getModel() << ";";
-
-		origin = carList[i].getOrigin();
-
-		switch (origin) {
-			case EUROPE:
-				outFile << "Europe";
-				break;
-			case US:
-				outFile << "US";
-				break;
-			default:
-				outFile << "Japan";
-				break;
-		}
+		// carList[i].getTitle(title);
+    //
+		// outFile << title << ";";
+ 		// outFile << carList[i].getMpg() << ";";
+ 		// outFile << carList[i].getCylinders() << ";";
+ 		// outFile << carList[i].getDisplacement() << ";";
+ 		// outFile << carList[i].getHorsepower() << ";";
+ 		// outFile << carList[i].getWeight() << ";";
+ 		// outFile << carList[i].getAcceleration() << ";";
+ 		// outFile << carList[i].getModel() << ";";
+    //
+		// origin = carList[i].getOrigin();
+    //
+		// switch (origin) {
+		// 	case EUROPE:
+		// 		outFile << "Europe";
+		// 		break;
+		// 	case US:
+		// 		outFile << "US";
+		// 		break;
+		// 	default:
+		// 		outFile << "Japan";
+		// 		break;
+		// }
 
 		if(i != size - 1) {
 			outFile << endl;
@@ -327,16 +342,17 @@ void CarList::writeFile(char filename[200]) {
 	outFile.close();
 }
 
-void VideoList::growList() {
+void CarList::growList() {
+
   capacity += 10;
   char tempTitle[200];
+  CarType *tempList = new CarType[capacity];
 
-  Car *tempList = new Car[capacity];
   for(int i = 0; i < size; i++) {
-    tempList[i] = list[i];
+    tempList[i] = carList[i];
   }
 
-  delete[] list;
-  list = templist;
+  delete [] carList;
+  carList = tempList;
   tempList = NULL;
 }

@@ -10,6 +10,8 @@
 #ifndef CAR_TYPE
 #define CAR_TYPE
 
+using namespace std;
+
 enum Origin {
   EUROPE = 0,
   US = 1,
@@ -19,7 +21,7 @@ enum Origin {
 class CarType {
   private:
 
-    char title[200];
+    char *title;
     double mpg;
     int cylinders;
     double displacement;
@@ -32,8 +34,11 @@ class CarType {
   public:
     CarType();
     CarType(char []);
+    ~CarType();
 
-    void setTitle(char title[200]);
+    friend ostream& operator<< (ostream& out, CarType& car);
+
+    const void setTitle(char title[200]);
     void setMpg(double newMpg);
     void setCylinders(int newCylinders);
     void setDisplacement(double newDisplacement);
@@ -43,7 +48,7 @@ class CarType {
     void setModel(int newModel);
     void setOrigin(Origin newOrigin);
 
-    void getTitle(char outTitle[200]);
+    const void getTitle(char outTitle[200]);
     double getMpg();
     int getCylinders();
     double getDisplacement();
@@ -53,7 +58,7 @@ class CarType {
     int getModel();
     Origin getOrigin();
 
-    const Car& operator= (const Car& car);
+    CarType& operator= (CarType& car);
 
     void print();
     void print(ofstream &);
