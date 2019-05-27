@@ -25,7 +25,6 @@ ostream & operator << (ostream &out, CarType &car) {
   double weight = car.getWeight();
   double acceleration = car.getAcceleration();
   int model = car.getModel();
-  // char origin[200];
 
   cout << title << ";"
        << mpg << ";"
@@ -65,8 +64,7 @@ CarType::CarType() {
 }
 
 CarType::~CarType() {
-	//deallocate memory for title
-
+  // the title is the only dynamic part of CarType
   if (title) {
     delete [] title;
     title = NULL;

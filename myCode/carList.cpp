@@ -309,31 +309,6 @@ void CarList::writeFile(char filename[200]) {
 
     carList[i].print(outFile);
 
-		// carList[i].getTitle(title);
-    //
-		// outFile << title << ";";
- 		// outFile << carList[i].getMpg() << ";";
- 		// outFile << carList[i].getCylinders() << ";";
- 		// outFile << carList[i].getDisplacement() << ";";
- 		// outFile << carList[i].getHorsepower() << ";";
- 		// outFile << carList[i].getWeight() << ";";
- 		// outFile << carList[i].getAcceleration() << ";";
- 		// outFile << carList[i].getModel() << ";";
-    //
-		// origin = carList[i].getOrigin();
-    //
-		// switch (origin) {
-		// 	case EUROPE:
-		// 		outFile << "Europe";
-		// 		break;
-		// 	case US:
-		// 		outFile << "US";
-		// 		break;
-		// 	default:
-		// 		outFile << "Japan";
-		// 		break;
-		// }
-
 		if(i != size - 1) {
 			outFile << endl;
 		}
