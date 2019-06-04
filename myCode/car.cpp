@@ -8,6 +8,7 @@
 //////////////////////////////////////////
 
 #include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include <string.h>
 #include "car.h"
@@ -100,25 +101,27 @@ void CarType::print() {
   return;
 }
 
-void CarType::print(ofstream &outFile) {
-  cout << title << ";"
-       << mpg << ";"
-       << cylinders << ";"
-       << displacement << ";"
-       << horsepower << ";"
-       << weight << ";"
-       << acceleration << ";"
-       << model << ";";
+void CarType::printToFile(ofstream &outFile) {
+
+
+  outFile << title << ";"
+          << mpg << ";"
+          << cylinders << ";"
+          << displacement << ";"
+          << horsepower << ";"
+          << weight << ";"
+          << acceleration << ";"
+          << model << ";";
 
   switch (origin) {
     case EUROPE:
-      cout << "Europe;" << endl;
+      outFile << "Europe";
       break;
     case US:
-      cout << "US;" << endl;
+      outFile << "US";
       break;
     default:
-      cout << "Japan;" << endl;
+      outFile << "Japan";
       break;
   }
 

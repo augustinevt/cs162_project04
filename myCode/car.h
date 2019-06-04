@@ -61,7 +61,7 @@ class CarType {
     CarType& operator= (CarType& car);
 
     void print();
-    void print(ofstream &);
+    void printToFile(ofstream &);
 };
 
 #endif

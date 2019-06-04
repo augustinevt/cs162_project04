@@ -22,7 +22,7 @@ int main() {
 
   CarList carList(fileName);
 
-  cout << "\n\nHello and welcome to project 3!\n\n";
+  cout << "\n\nHello and welcome to project 4!\n\n";
 
   while(tolower(cmd) != 'q') {
     cout << "------MAIN MENU--------\n"
@@ -51,7 +51,7 @@ int main() {
         break;
 
       case 'q':
-        // carList.writeFile(fileName);
+        carList.writeFile(fileName);
         cout << "Goodbye" << endl;
         break;
 

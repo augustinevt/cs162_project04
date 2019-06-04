@@ -13,7 +13,7 @@
 #include "carList.h"
 #include "utils.h"
 
-void search(CarList carList) {
+void search(CarList& carList) {
 	int searchSelect = 1;
 	double weightTerm;
 	char searchTerm[200];

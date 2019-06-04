@@ -21,7 +21,7 @@ enum SearchOptions {
   ORIGIN_SEARCH = 3
 };
 
-void search(CarList carList);
+void search(CarList &carList);
 void getInt(int &input, char prompt[200]);
 void getDouble(double &input, char prompt[200]);
 

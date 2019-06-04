@@ -19,7 +19,7 @@ using namespace std;
 CarList::CarList(char fileName[]) {
 
   size = 0;
-  capacity = 407;
+  capacity = 1000;
   carList = new CarType[capacity];
 
   ifstream inFile;
@@ -99,12 +99,10 @@ CarList::CarList(char fileName[]) {
 }
 
 CarList::~CarList() {
-
-  if(carList)
-    {
-      delete [] carList;
-      carList = NULL;
-    }
+  if(carList) {
+    delete [] carList;
+    carList = NULL;
+  }
 }
 
 void CarList::searchByTitle() {
@@ -117,7 +115,7 @@ void CarList::searchByTitle() {
 	for(int i = 0; i < size; i++) {
     carList[i].getTitle(carTitle);
 		if (strstr(carTitle, term)) {
-			carList[i].print();
+			cout << carList[i];
 		}
 	}
 
@@ -132,7 +130,7 @@ void CarList::searchByModel() {
 
 	for(int i = 0; i < size; i++) {
 		if(carList[i].getModel() == model) {
-			carList[i].print();
+			cout << carList[i];
 		}
 	}
 
@@ -172,7 +170,7 @@ void CarList::searchByOrigin() {
 
 	for(int i = 0; i < size; i++) {
 		if (carList[i].getOrigin() == origin) {
-			carList[i].print();
+			cout << carList[i];
 		}
 	}
 
@@ -209,10 +207,7 @@ void CarList::print() {
 
 void CarList::addCar() {
 
-// NOTE: app CAP and refactor to use the assignment operator? and or extract car adding stuff?
-
-  if(size + 1 == capacity)
-  {
+  if(size + 1 == capacity) {
     growList();
   }
 
@@ -307,7 +302,7 @@ void CarList::writeFile(char filename[200]) {
 
 	for(int i = 0; i < size; i++) {
 
-    carList[i].print(outFile);
+    carList[i].printToFile(outFile);
 
 		if(i != size - 1) {
 			outFile << endl;
